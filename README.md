@@ -24,7 +24,7 @@ Weather apps enable users to get instant alerts regarding weather conditions. Th
 Initial Release
 
 **Hosted**  
-To view application **https://weather-app-poorni.glitch.me/**
+To view application **https://weather-app-poornii.glitch.me/**
 
 **Author**  
 @Poornima Rajan
