@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type = "text/css" href="./style.css" />
+    <script type="module" src="./scripts/script.js"></script>
+    <link rel="icon" type="image/x-icon" href="./assets/icon.png"/>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather app</title>
+  </head>
+  <body>
+    <div class = "container">
+        <div class ="top-container">
+          <!--current city input option,date and time-->
+          <div class ="city-details">
+            
+            <div class ="current-city-sec">
+              <div class="city-name">
+                <img class="city-image" id="city-image" src="assets/cityImage.svg"/>
+              </div>
+              <div class="city-now-date-time">
+                <!-- <input type="text" id = "current-city-name" value="New Delhi"/> -->
+                <div class="autocomplete">
+                <input
+                class="city-input-field text-capitalize"
+                id="city-name"
+                type="text"
+                spellcheck="false"
+                value="london"
+                oninput="autocompleteinput"
+                />
+              </div>
+                <div class="city-time">
+                  <div class="time">
+                    <span id ="HM" class="colon">:</span>
+                    <span id ="sec" style="font-size: 15px;"></span>
+                    </span>
+                  </div>
+                <img id = "AM-PM-icon" class="am-or-pm" src="assets/amState.svg"/>
+              </div>
+              <span id = "date" style="color: aliceblue;">01-Mar-2020</span>
+
+            </div>
+            </div>
+            </div>
+          <!--temp,humidity & percipitation-->
+          <div class="temp-grid">
+            <div class="temp border-right" >Temp&#xb0;C<br><div class = "text-big-bold" id="Celcius">25 C</div></div>
+            <div class="temp">Humidity<br><div class = "text-big-bold" id="Humidity">26%</div></div>
+            <div class="temp border-right">Temp F<br><div class = "text-big-bold" id="Fahrenheit">78 F</div></div>
+            <div class="temp">Percipitation<br><div class = "text-big-bold" id="Percipitation">0%</div></div>
+          </div>
+          <!--Hourly data-->
+          <div class="hourly-data-grid">
+            <!--1st row(time) -->
+           <div class ="content">NOW</div>
+           <div class ="content"></div>
+           <div class ="content" id="weather-time-0">11 AM</div>
+           <div class ="content"></div>
+           <div class ="content" id="weather-time-1">12 PM</div>
+           <div class ="content"></div>
+           <div class ="content" id="weather-time-2">1 PM</div>
+           <div class ="content"></div>
+           <div class ="content" id="weather-time-3">2 PM</div>
+           <!--vertical line-->
+           <div class ="content">|</div>
+           <div class ="vertical-line">|</div>
+           <div class ="content">|</div>
+           <div class ="vertical-line">|</div>
+           <div class ="content">|</div>
+           <div class ="vertical-line">|</div>
+           <div class ="content">|</div>
+           <div class ="vertical-line">|</div>
+           <div class ="content">|</div>
+           <!-- images -->
+           <div class ="content"><img src="assets/cloudyIcon.svg" class="weather-icon" id="weather-img-now"/></div>
+           <div class ="content"></div>
+           <div class ="content"><img src="assets/rainyIcon.svg" class="weather-icon" id="weather-img-0"/></div>
+           <div class ="content"></div>
+           <div class ="content"><img src="assets/windyIcon.svg"  class="weather-icon"id="weather-img-1"/></div>
+           <div class ="content"></div>
+           <div class ="content"><img src="assets/rainyIcon.svg"  class="weather-icon" id="weather-img-2"/></div>
+           <div class ="content"></div>
+           <div class ="content"><img src="assets/windyIcon.svg" class="weather-icon" id="weather-img-3"/></div>
+           <!--temp-->
+           <div class ="content" id="weather-temp-now"></div>
+           <div class ="content"></div>
+           <div class ="content" id="weather-temp-0"></div>
+           <div class ="content"></div>
+           <div class ="content" id="weather-temp-1"></div>
+           <div class ="content"></div>
+           <div class ="content" id="weather-temp-2"></div>
+           <div class ="content"></div>
+           <div class ="content" id="weather-temp-3"></div>
+          </div>
+          </div>
+
+          <!--Middle container-->
+          <div class="middle-container">
+            <div class="top-cities-weather">
+            <div class ="top-cities-nav">
+              <div class="heading-top-cities">
+                Top cities around world
+                <div class="top-cities-nav-items">
+                  <div class="nav-icons pointer-cursor">
+                    <img class="weather-icon" id ="sunny" src="assets/sunnyIcon.svg" onclick="changecities()"/>
+                    <img class="weather-icon  border" id ="cold" src="assets/snowflakeIcon.svg" onclick="changecities()"/>
+                    <img class="weather-icon  border" id ="rainy" src="assets/rainyIcon.svg" onclick="changecities()"/>
+                  </div>
+                  <!--Spinner-->
+                  <div class="top-cities-count">
+                    Display top
+                    <input
+                      class="top-cities-spinner"
+                      id="top-city-spinner"
+                      type="number"
+                      value="3"
+                      min="3"
+                      max="10"
+                      onchange="countChange()"
+                    />
+                  </div>
+              </div>
+            </div>
+            </div>
+            <!--Prev and next buttons-->
+            <div class="display-container">
+              <img class="transition-btn pointer-cursor display" 
+              direction ="previous"
+              src="assets/previous.png" 
+              onclick="movescroll(event)"/>
+            <!-- Top cities weather display -->
+            <div class="top-cities-display">
+              <!-- Cards -->
+            </div>
+
+            <img class="transition-btn pointer-cursor display" 
+            direction = "next"
+            src="assets/next.png" 
+            onclick="movescroll(event)"/>
+          </div>
+           
+        </div>
+      
+      </div>
+      
+
+          <!--Bottom container-->
+          <!-- Cities across continents at a glance -->
+          <div class="bottom-container">
+            <div class="continent-header">
+              <div class="continent-title">
+              Cities across continents at a glance
+              </div>
+              <div class="continent-sidetext">
+                <div class="cont-head-alignment text-capitalize">
+                  <div>continent names</div>
+                  <img class="arrow down cont  pointer-cursor" 
+                  src="assets/arrowDown.svg" 
+                  parameter="continent"
+                  onclick="performSort(event)" />
+                </div>
+                <div class="cont-head-alignment text-capitalize">
+                  <div>temperature</div>
+                  <img class="arrow up temp pointer-cursor" 
+                  src="assets/arrowUp.svg"
+                  parameter="temperature"
+                  onclick="performSort(event)"/>
+                </div>
+              </div>
+            </div>
+
+            <!-- Grid rows -->
+            <div class="continent-grid-display">
+            </div>
+
+
+          </div>
+
+          <div class="footer"></div>
+
+      </div>
+
+  </body>
+</html>
